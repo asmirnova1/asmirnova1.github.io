@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>Donate to smirnova</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background: #111;
+            font-family: "Roboto", sans-serif;
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            display: flex;
+            align-items: center;
+            align-content: center; 
+            justify-content: center; 
+            overflow: auto;  
+        }
+        .buttons {
+            display: block;
+        }
+        .btn {
+            margin: 5px;
+            text-align: center;
+            padding: 10px;
+            border-radius: 55px;
+            background: transparent;
+            font-size: 1em;
+            width: 110px; 
+            color: #fff;
+            outline: 0;
+            border: 2px solid #2d2d2d;
+            transition: all 0.3s ease;
+        }
+        .glow-s:hover {
+            border: 2px solid #00c853;
+            box-shadow: 0 0 20px #00c853;
+        }
+        .glow-q:hover {
+            border: 2px solid #FB8C00;
+            box-shadow: 0 0 20px #FB8C00;
+        }
+        .glow-y:hover {
+            border: 2px solid #8B3FDF;
+            box-shadow: 0 0 20px #8B3FDF;
+        }
+    </style>
+</head>
+    <body>
+        <div class="buttons">
+            <button id="S" class="btn glow-s" onclick="copy(event)">PrivatBank</button>
+            <button id="Q" class="btn glow-q" onclick="copy(event)">QiwiWallet</button>
+        </div>
+        <script>
+        var num = {'S':['4149499127977534', '#00C853', 'PrivatBank'],
+                'Y':['410015635168823', '#8B3FDf', 'YoMoney'],
+                'Q': [null, "#FB8C00", "QiwiWallet"]};
+        function copy(e) {
+            id = e.target.id;
+            var tempInput = document.createElement("input");
+            tempInput.value = num[id][0];
+            document.body.appendChild(tempInput);
+            tempInput.select(); document.execCommand("copy");
+            document.body.removeChild(tempInput);
+            if(id != "Q") {document.getElementById(id).innerHTML = "Copied!";}
+                else {window.location.href='https://qiwi.com/n/ATONI482';}
+                document.getElementById(id).style.background = num[id][1];
+                setTimeout(()=> {
+                    document.getElementById(id).style.background = null;
+                    document.getElementById(id).innerText = num[id][2]
+                }, 1000)
+            }
+
+        </script>
+    
+</body></html>
